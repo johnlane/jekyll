@@ -66,6 +66,8 @@ module Jekyll
         c.option "show_drafts", "-D", "--drafts", "Render posts in the _drafts folder"
         c.option "unpublished", "--unpublished",
           "Render posts that were marked as unpublished"
+        c.option "private", "--private",
+          "Render posts that were marked as private"
         c.option "quiet", "-q", "--quiet", "Silence output."
         c.option "verbose", "-V", "--verbose", "Print verbose output."
         c.option "incremental", "-I", "--incremental", "Enable incremental rebuild."

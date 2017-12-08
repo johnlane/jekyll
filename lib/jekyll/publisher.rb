@@ -17,7 +17,8 @@ module Jekyll
     private
 
     def can_be_published?(thing)
-      thing.data.fetch("published", true) || @site.unpublished
+      (thing.data.fetch("published", true) || @site.unpublished) &&
+      (!thing.data.fetch("categories",{}).include?('private') || @site.private)
     end
   end
 end

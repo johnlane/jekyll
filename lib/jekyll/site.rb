@@ -9,7 +9,7 @@ module Jekyll
                   :exclude, :include, :lsi, :highlighter, :permalink_style,
                   :time, :future, :unpublished, :safe, :plugins, :limit_posts,
                   :show_drafts, :keep_files, :baseurl, :data, :file_read_opts,
-                  :gems, :plugin_manager, :theme
+                  :gems, :plugin_manager, :theme, :private
 
     attr_accessor :converters, :generators, :reader
     attr_reader   :regenerator, :liquid_renderer, :includes_load_paths
@@ -46,7 +46,7 @@ module Jekyll
       @config = config.clone
 
       %w(safe lsi highlighter baseurl exclude include future unpublished
-        show_drafts limit_posts keep_files).each do |opt|
+        show_drafts limit_posts keep_files private).each do |opt|
         self.send("#{opt}=", config[opt])
       end
 
@@ -122,8 +122,10 @@ module Jekyll
       dest_pathname = Pathname.new(dest)
       Pathname.new(source).ascend do |path|
         if path == dest_pathname
-          raise Errors::FatalException,
+          raise(
+            Errors::FatalException,
             "Destination directory cannot be or contain the Source directory."
+          )
         end
       end
     end
