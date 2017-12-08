@@ -66,6 +66,14 @@ module Jekyll
         c.option "show_drafts", "-D", "--drafts", "Render posts in the _drafts folder"
         c.option "unpublished", "--unpublished",
           "Render posts that were marked as unpublished"
+        c.option "with_categories", "--with-categories CAT[,CAT,...]", Array,
+          "Render posts that have any of these categories"
+        c.option "without_categoriestags", "--without-categories CAT[,CAT,...]", Array,
+          "Render posts that do not have any of these categories"
+        c.option "with_tags", "--with-tags TAG[,TAG,...]", Array,
+          "Render posts that have any of these tags"
+        c.option "without_tags", "--without-tags TAG[,TAG,...]", Array,
+          "Render posts that do not have any of these tags"
         c.option "quiet", "-q", "--quiet", "Silence output."
         c.option "verbose", "-V", "--verbose", "Print verbose output."
         c.option "incremental", "-I", "--incremental", "Enable incremental rebuild."

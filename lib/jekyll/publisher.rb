@@ -17,7 +17,19 @@ module Jekyll
     private
 
     def can_be_published?(thing)
-      thing.data.fetch("published", true) || @site.unpublished
+      (thing.data.fetch("published", true) || @site.unpublished) && (
+
+        (@site.with_categories.to_a.empty? ||
+         ! (thing.data.fetch("categories",[]) & @site.with_categories).empty? ) &&
+
+        (@site.without_categories.to_a.empty? ||
+           (thing.data.fetch("categories",[]) & @site.without_categories).empty? ) &&
+
+        (@site.with_tags.to_a.empty? ||
+         ! (thing.data.fetch("tags",[]) & @site.without_tags).empty? ) &&
+
+        (@site.without_tags.to_a.empty? ||
+           (thing.data.fetch("tags",[]) & @site.without_tags).empty? ) )
     end
   end
 end

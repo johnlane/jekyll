@@ -32,6 +32,10 @@ module Jekyll
       "limit_posts"         => 0,
       "future"              => false,
       "unpublished"         => false,
+      "with_tags"           => nil,
+      "without_tags"        => nil,
+      "with_categories"     => nil,
+      "without_categories"  => nil,
 
       # Plugins
       "whitelist"           => [],
